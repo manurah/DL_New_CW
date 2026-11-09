@@ -1,0 +1,120 @@
+Hi everyone,
+
+Now that we have four members, I’ve updated our coursework plan so that everyone participates from the beginning in planning, design, development, testing and error analysis.
+
+Our target is to finish by 30 October, keeping 31 October as a buffer for essential repairs. The official submission deadline is 11 November 2026 at 23:59, but our planned work will finish before November.
+
+Please review the attached detailed guide and shared Excel tracker.
+four_member_project_tracker - Google Sheets
+We will use A, B, C and D as member IDs and replace the name placeholders together.
+
+1. Responsibilities
+
+Each person will contribute code to both classifiers, independently test someone else’s work and analyse actual model errors.
+
+Member	Word-overlap contribution	Entailment contribution	Analysis and coordination
+A	Main lexical scoring	Word-overlap pruning	Examine 3 false positives and 2 false negatives; write example 1 and lexical results; coordinate integration
+B	Tokenization and preprocessing	Model inference, class mapping and S/NS decisions	Examine 2 false positives and 3 false negatives; write example 2 and entailment results; manage environment and reproduction
+C	Aggregation of passage scores	Sentence splitting and evidence cleaning	Examine 3 false positives and 2 false negatives; write example 3 and analysis section; verify data and final package
+D	Threshold evaluation tooling	Bounded processing and evidence-score aggregation	Examine 2 false positives and 3 false negatives; consolidate categories/counts, integrate the PDF and coordinate tracking/submission
+These are lead responsibilities, not isolated sections. Everyone must understand and review the complete project.
+
+The error allocation assumes ten false positives and ten false negatives are available. If fewer exist, we will examine all available errors and redistribute them fairly.
+
+2. Schedule
+
+Date in October	Work to complete
+13	Agree roles, availability and workflow; begin environment, data and tracker setup
+14	Finish setup; verify label/IR handling; each person traces an example through the complete pipeline
+15	Jointly approve scoring, preprocessing, aggregation, entailment and evaluation designs
+16–17	Each member implements their word-overlap component; integrate and explain the code
+18	Cross-test scoring, preprocessing, aggregation and threshold behaviour
+19	Complete the full word-overlap run and record actual results
+20–21	Each member implements their entailment component; integrate inference, segmentation, pruning and memory controls
+22	Independently test entailment behaviour and compare pruning/decision settings
+23	Complete the full entailment run and record accuracy, runtime and device
+24	Resolve core defects and agree the final configuration
+25	Rerun both final methods; capture predictions and select actual errors
+26	Each person examines their allocated errors and reviews another member’s records
+27	Agree categories and counts; complete the report draft and three detailed examples
+28	Integrate and inspect the PDF; check every claim against final code and results
+29	Independently reproduce both commands; conduct the whole-project mock viva
+30	Freeze the final files and verify submission, if the dropbox is open
+31	Essential repairs only, followed by the affected verification checks
+The tracker contains the individual assignments and acceptance criteria for each day.
+
+3. Working and tracking process
+
+We will use one shared workbook, rather than separately edited copies. It contains:
+
+Tasks: 40 tasks, with ten owned by each person, reviewers, dependencies, due dates and acceptance criteria.
+Daily plan: the schedule and daily completion conditions.
+Experiments: configurations, commands, accuracy, runtime and conclusions.
+Errors: facts, evidence, actual/predicted labels, categories and explanations.
+Contributions: identifiable work and learning from each member.
+Viva: six whole-project topic checks per person.
+Please filter the Tasks sheet by Owner for your work and Reviewer for your review queue. Update the amber input cells and keep the As-of date current.
+
+A task only counts as complete when its prerequisites are complete and it has evidence, accepted peer review and a completion date. Mark blockers immediately with a concrete next action.
+
+Let’s have a short daily check-in and end-of-day review. Our provisional availability assumption is around 2–3 focused hours per person daily, plus unattended model runs; we should confirm everyone’s actual availability at the start.
+
+4. Technical requirements
+
+We must:
+
+Use Python 3.10 and the versions in requirements.txt.
+Implement the required methods in factcheck.py.
+Leave factchecking_main.py unchanged.
+Verify actual model class mapping, input ordering and IR handling.
+Record real experiments and maintain one reproducible final configuration.
+Complete runs without memory errors.
+The stated accuracy targets are at least 75% for word overlap and 83% for entailment. The marking rubric also requires justified decisions, experiments, efficiency and meaningful analysis.
+
+Both commands must run successfully:
+
+python factchecking_main.py --mode word_overlap
+python factchecking_main.py --mode entailment
+We should acknowledge that tuning and reporting on the same development dataset does not provide an independent test-set estimate.
+
+5. Error analysis and report
+
+We will examine up to 10 false positives and 10 false negatives, using the final entailment predictions.
+
+Our analysis must include:
+
+2–4 meaningful categories, based on observed patterns.
+Brief category definitions and reconciled counts.
+Three detailed examples, each containing the fact, ground truth, prediction, category and explanation.
+A, B and C will draft one detailed example each. D will examine their own five errors, consolidate the statistics and review all three examples. Everyone will contribute to the interpretation and approve the final report.
+
+We must follow the brief’s GenAI Category 3: Editing rules for assessed work.
+
+6. Viva preparation
+
+Each member may be questioned on the entire project. We will practise throughout the project, not just at the end.
+
+Everyone should be able to explain:
+
+The task, dataset, labels and complete pipeline.
+Word-overlap scoring, preprocessing and thresholds.
+Entailment inputs, model outputs and binary decisions.
+Evidence processing, pruning and memory management.
+Actual experiments, results and evaluation limitations.
+Error categories, all three report examples and personal contributions.
+During the mock viva, we will rotate examiner, candidate, code/evidence checker and observer roles. Answers should explain the decision, reason, actual evidence and limitation.
+
+7. Final completion
+
+Before freezing the work, we will confirm that the code reproduces the reported results, the PDF matches the final predictions, all four members understand the whole project and the required files are ready.
+
+We must submit the PDF report and factcheck.py separately. If the dropbox is not open by our October finish date, we will retain the verified package and clearly record submission as pending.
+
+Please review your responsibilities and share any availability or access issues at our first check-in so we can adjust early.
+
+Thanks,
+Sachinthana
+
+Attach these files before sending:
+
+[Detailed execution guide]
