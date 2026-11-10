@@ -33,7 +33,9 @@ TABLE_PATH = RESULTS_DIR / "entailment_pruning_005_thresholds.csv"
 
 def file_hash(path):
     # Fingerprint files so changed code or data cannot silently reuse old scores.
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+    # Ignore line-ending differences between Windows and Unix checkouts.
+    content = path.read_bytes().replace(b"\r\n", b"\n")
+    return hashlib.sha256(content).hexdigest()
 
 
 def main():
@@ -173,7 +175,7 @@ def main():
 
     # Export every tested threshold, not just the best result.
     with TABLE_PATH.open("w", newline="", encoding="utf-8") as file:
-        writer = csv.DictWriter(file, fieldnames=list(rows[0]))
+        writer = csv.DictWriter(file, fieldnames=list(rows[0]), lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
